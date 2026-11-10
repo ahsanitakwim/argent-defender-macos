@@ -1,23 +1,20 @@
-
-name: ARGENT DEFENDER 1.0.1 DMG
+name: ARGENT DEFENDER - macOS DMG
 
 on:
   workflow_dispatch:
   push:
-    branches:
-      - main
+    branches: [main]
 
 permissions:
   contents: read
 
 jobs:
   build:
-    name: Build Universal macOS
+    name: Build Universal macOS DMG
     runs-on: macos-15-intel
     timeout-minutes: 90
-
     steps:
-      - name: Checkout
+      - name: Checkout source
         uses: actions/checkout@v4
 
       - name: Setup Rust
@@ -25,7 +22,7 @@ jobs:
         with:
           targets: aarch64-apple-darwin,x86_64-apple-darwin
 
-      - name: Build DMG
+      - name: Build and package
         run: |
           chmod +x scripts/build_macos.sh
           ./scripts/build_macos.sh
@@ -33,7 +30,7 @@ jobs:
       - name: Upload DMG
         uses: actions/upload-artifact@v4
         with:
-          name: ARGENT-DEFENDER-1.0.1
+          name: ARGENT-DEFENDER-1.0.2-macOS-DMG
           path: |
             dist/*.dmg
             dist/*.sha256
