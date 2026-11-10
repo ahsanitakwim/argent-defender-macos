@@ -1,6 +1,5 @@
 import SwiftUI
 import AppKit
-import Charts
 
 @MainActor
 struct OverviewView: View {
@@ -27,9 +26,16 @@ struct OverviewView: View {
             }
             HStack(alignment: .top, spacing: 14) {
                 Panel(title: "Findings by severity (recent scans)", systemImage: "chart.bar") {
-                    Chart(Severity.allCases.reversed().filter { $0 != .NOT_ACCESSIBLE }, id: \.self) { s in
-                        BarMark(x: .value("Severity", s.label), y: .value("Count", f.filter { $0.severity == s }.count))
-                            .foregroundStyle(s.color)
+                    VStack(alignment: .leading, spacing: 10) {
+                        ForEach(Severity.allCases.reversed().filter { $0 != .NOT_ACCESSIBLE }, id: \.self) { severity in
+                            let count = f.filter { $0.severity == severity }.count
+                            HStack {
+                                Text(severity.label).font(.caption).frame(width: 88, alignment: .leading)
+                                ProgressView(value: Double(count), total: Double(max(1, f.count)))
+                                    .accentColor(severity.color)
+                                Text("\(count)").font(.caption.monospacedDigit()).frame(width: 28, alignment: .trailing)
+                            }
+                        }
                     }
                     .frame(height: 200)
                 }
@@ -38,13 +44,16 @@ struct OverviewView: View {
                     if pts.isEmpty {
                         Text("No scans yet.").foregroundStyle(.secondary).frame(height: 200)
                     } else {
-                        Chart(pts) { item in
-                            LineMark(x: .value("Scan", item.index), y: .value("Score", item.score))
-                                .interpolationMethod(.monotone).foregroundStyle(Theme.cyan)
-                            PointMark(x: .value("Scan", item.index), y: .value("Score", item.score))
-                                .foregroundStyle(Theme.scoreColor(item.score))
+                        VStack(alignment: .leading, spacing: 8) {
+                            ForEach(pts) { item in
+                                HStack {
+                                    Text("Scan \(item.index + 1)").font(.caption).frame(width: 58, alignment: .leading)
+                                    ProgressView(value: Double(item.score), total: 100)
+                                        .accentColor(Theme.scoreColor(item.score))
+                                    Text("\(item.score)").font(.caption.monospacedDigit()).frame(width: 30, alignment: .trailing)
+                                }
+                            }
                         }
-                        .chartYScale(domain: 0...100)
                         .frame(height: 200)
                     }
                 }

@@ -62,3 +62,8 @@ Engine juga dapat dipakai langsung: `engine/target/release/argent-engine --help`
 ## macOS compatibility (1.0.1)
 
 This source targets macOS 12.0 and later. Navigation and row-grid presentation include macOS 12-compatible layouts. Universal Intel and Apple Silicon packaging is configured by `scripts/build_macos.sh`. Build and runtime compatibility must be verified through CI and testing on supported macOS versions.
+
+
+## macOS 12 SwiftUI compatibility update (1.0.2)
+
+The Overview dashboard uses native SwiftUI progress indicators instead of the macOS 13 Charts framework APIs. The AI question field uses the macOS 12-compatible TextField initializer. This removes the specific macOS 13-only APIs identified in the previous CI compiler log. Full build and runtime compatibility still require CI and device verification.

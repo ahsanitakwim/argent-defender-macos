@@ -36,7 +36,7 @@ struct AIView: View {
                 }
             }
             Panel(title: "Ask ARGENT AI", systemImage: "bubble.left.and.text.bubble.right") {
-                TextField("Question", text: $question, axis: .vertical).textFieldStyle(.roundedBorder)
+                TextField("Question", text: $question).textFieldStyle(.roundedBorder)
                 HStack {
                     Toggle("Use cloud AI (opt-in)", isOn: $useCloud).disabled(!cloudEnabled)
                     Spacer()
