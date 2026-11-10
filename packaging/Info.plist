@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleName</key><string>ARGENT DEFENDER</string>
+    <key>CFBundleDisplayName</key><string>ARGENT DEFENDER</string>
+    <key>CFBundleIdentifier</key><string>id.argentdefender.app</string>
+    <key>CFBundleExecutable</key><string>ArgentDefender</string>
+    <key>CFBundleIconFile</key><string>ArgentDefender</string>
+    <key>CFBundlePackageType</key><string>APPL</string>
+    <key>CFBundleShortVersionString</key><string>1.0.1</string>
+    <key>CFBundleVersion</key><string>1</string>
+    <key>LSMinimumSystemVersion</key><string>12.0</string>
+    <key>LSApplicationCategoryType</key><string>public.app-category.utilities</string>
+    <key>NSHighResolutionCapable</key><true/>
+    <key>NSHumanReadableCopyright</key><string>ARGENT DEFENDER — DEFEND THE DIGITAL. REVEAL THE TRUTH.</string>
+    <key>NSLocalNetworkUsageDescription</key><string>ARGENT DEFENDER connects to Android (wireless debugging) and iPhone devices on your local network that you have paired, and to a local AI server if you configured one.</string>
+    <key>NSDesktopFolderUsageDescription</key><string>Scan files and evidence you choose on the Desktop.</string>
+    <key>NSDocumentsFolderUsageDescription</key><string>Scan files and evidence you choose in Documents.</string>
+    <key>NSDownloadsFolderUsageDescription</key><string>Scan downloaded APK/IPA files you choose.</string>
+    <key>NSRemovableVolumesUsageDescription</key><string>Read evidence from external drives you choose.</string>
+</dict>
+</plist>

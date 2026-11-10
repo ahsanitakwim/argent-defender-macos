@@ -1,0 +1,1 @@
+{"ok":false,"command":"scan /nonexistent","data":null,"error":"cannot access /nonexistent: No such file or directory (os error 2)","duration_ms":9,"engine_version":"1.0.0"}
